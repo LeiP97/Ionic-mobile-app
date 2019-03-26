@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Teacher
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item (click)="onSelect(activity)" *ngFor="let activity of resnumberfit.Activities">
+      <ion-button expand="block">{{activity.Title}}</ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" href="/menu">Back</ion-button>
+</ion-content>

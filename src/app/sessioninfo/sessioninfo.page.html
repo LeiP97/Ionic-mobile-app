@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Session Information
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label slot="start">SessionName</ion-label>
+      <ion-label slot="end">{{resnumberfit.SessionName}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">Topic</ion-label>
+      <ion-label slot="end">{{resnumberfit.Topic}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label slot="start">ClassID</ion-label>
+      <ion-label slot="end">{{resnumberfit.ClassID}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+    <ion-label>Today's Teams:</ion-label>
+    </ion-item>
+    <ion-item *ngFor="let team of resnumberfit.Teams">
+      <ion-label slot = "start">TeamName: {{team.TeamName}}</ion-label>
+      <ion-label slot = "end">Color: {{team.Color}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+    <ion-label>Today's Activities:</ion-label>
+    </ion-item>
+    <ion-item *ngFor="let activity of resnumberfit.Activities">
+      <ion-label slot = "start">Activity Title: {{activity.Title}}</ion-label>
+      <ion-label slot = "end">Type: {{activity.TypeOfActivity}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

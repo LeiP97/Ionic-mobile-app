@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      {{activityTitle}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item *ngFor="let team of resnumberfit.Teams">
+    <ion-label>Team {{team.Color}}:</ion-label>
+    <ion-input>
+    </ion-input>
+    <ion-button expand="block" fill= 'outline' (click)='addinfo()'>add</ion-button>
+  </ion-item>
+  <ion-button expand="block" href="/teachermenu">Submit</ion-button>
+  <ion-button expand="block" href="/teachermenu">Back</ion-button>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Observation
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-list-header>Select a team</ion-list-header>
+    <ion-item>
+      <ion-label>Team</ion-label>
+      <ion-select placeholder="Select One" [(ngModel)]="whichteam"> <!--(ngModelChange)="selectChange()"-->
+        <ion-item *ngFor = "let team of resnumberfit.Teams">
+          <ion-select-option [value]="team">{{team.Color}} Team</ion-select-option>
+        </ion-item>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item *ngFor="let student of whichteam.Students">
+          <!--can only pass a string or a number, rather than an object-->
+      <ion-button expand="block" (click)="onSelect(student.StudentID)">{{student.Label}}</ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="block" (click)="presentAlertConfirm()">Suggestion</ion-button>
+  <ion-button expand="block" href="/menu">Upload all data and back</ion-button>
+  <ion-button expand="block" href="/menu">Back</ion-button>
+  <!--<ion-button expand="block" (click)="hi()">hh</ion-button>-->
+</ion-content>

@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Observation
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-textarea>Student ID: {{studentId}}</ion-textarea>
+  <ion-textarea>Observer: </ion-textarea>
+  <form #observeForm="ngForm" (ngSubmit)="onSubmit(observeForm.value)">
+  {{observeForm.value | json}}
+    <ion-list>
+
+      <ion-item *ngFor="let parameter of resnumberfit.ObservationAPPparams.ObservationCategories" [ngSwitch]="parameter.TypeOfCategory">
+        <ion-label>{{parameter.CategoryName}}</ion-label>
+        <ion-range *ngSwitchCase="'ScaledQuestion'" color="danger" pin="true" [min]="parameter.MinValue" [max]="parameter.MaxValue" [name]="parameter.CategoryName" ngModel></ion-range>
+        
+        <ion-radio-group *ngSwitchCase="'CheckList'" ngModel [name]="parameter.CategoryName">
+          <ion-item *ngFor="let posiblevalue of parameter.PosibleValues">
+            <ion-label>{{posiblevalue}}</ion-label>
+            <ion-radio slot="start" [value]="posiblevalue" checked></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+
+        <ion-select *ngSwitchCase="'MultipleChoice'" multiple="true" cancelText="Nah" okText="Okay!" placeholder="Select One" ngModel [name]="parameter.CategoryName">
+          <ion-select-option *ngFor="let posiblevalue of parameter.PosibleValues" [value]="posiblevalue">{{posiblevalue}}</ion-select-option>
+        </ion-select>
+        
+        <!--<ion-label *ngSwitchDefault>pick again</ion-label>-->
+        <ion-textarea *ngSwitchCase="'TextField'" placeholder="Write your comment here..." ngModel [name]="parameter.CategoryName"></ion-textarea>
+
+      </ion-item>
+    </ion-list>
+
+  <ion-item>
+    <ion-label>
+    Time remain:
+    </ion-label>
+    {{timer}}s
+    <ion-button expand="block" (click)="pauseTimer()">Pause</ion-button>
+    <ion-button expand="block" (click)="startTimer()">Start</ion-button>
+  </ion-item>
+
+  <ion-button expand="block" type="submit">Confirm</ion-button>
+  <ion-button expand="block" href="/observemenu">Cancel</ion-button>
+    <ion-button expand="block" (click)='test()'>test</ion-button>
+  <!--<ion-button expand="block" (click)="test()">test</ion-button>--->
+  </form>
+</ion-content>
+
+
+      
+
+      <!--<ion-item>
+        <ion-range min="1000" max="2000" step="100" snaps="true" color="secondary"></ion-range>
+      </ion-item>
+
+      <ion-item>
+        <ion-range dualKnobs="true" min="21" max="72" step="3" snaps="true"></ion-range>
+      </ion-item>-->
